@@ -11,9 +11,9 @@ spec:
   servers:
     - port:
         {{- with (first .Values.istio.gateways) }}
-        number: {{ .port }}
-        name: {{ .portName }}
-        protocol: {{ .protocol }}
+        number: {{ .port | default 443 }}
+        name: {{ .portName | default "https" }}
+        protocol: {{ .protocol | default "HTTPS" }}
         {{- end }}
       hosts:
         {{- include "common.tplvalues.render" ( dict "value" .Values.istio.hosts "context" $ ) | nindent 6 }}
