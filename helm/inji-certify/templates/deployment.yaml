@@ -93,25 +93,25 @@ spec:
           {{- end }}
           env:
             - name: container_user
-              value: {{ .Values.containerSecurityContext.runAsUser }}
+              value: {{ .Values.containerSecurityContext.runAsUser | quote }}
             {{- if .Values.additionalResources.javaOpts }}
             - name: JDK_JAVA_OPTIONS
-              value: {{ .Values.additionalResources.javaOpts }}
+              value: {{ .Values.additionalResources.javaOpts | quote }}
             {{- end }}
             {{- if .Values.springConfigNameEnv }}
             - name: spring_config_name_env
-              value: {{ .Values.springConfigNameEnv }}
+              value: {{ .Values.springConfigNameEnv | quote }}
             {{- end }}
             {{- if .Values.activeProfileEnv }}
             - name: active_profile_env
-              value: {{ .Values.activeProfileEnv }}
+              value: {{ .Values.activeProfileEnv | quote }}
             {{- end}}
             {{- if .Values.extraEnvVars }}
             {{- include "common.tplvalues.render" (dict "value" .Values.extraEnvVars "context" $) | nindent 12 }}
             {{- end }}
             {{- if .Values.installHSMPlugin }}
             - name: install_hsm_client
-              value: {{ .Values.installHSMPlugin }}
+              value: {{ .Values.installHSMPlugin | quote }}
             {{- end }}
           envFrom:
             {{- if .Values.extraEnvVarsCM }}
@@ -128,7 +128,7 @@ spec:
             {{- end }}
           ports:
             - name: spring-service
-              containerPort: {{ .Values.springServicePort }}
+              containerPort: {{ .Values.springServicePort | default 8080 }}
            
           {{- if .Values.resources }}
           resources: {{- toYaml .Values.resources | nindent 12 }}
