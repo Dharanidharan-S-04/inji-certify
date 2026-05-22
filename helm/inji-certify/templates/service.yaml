@@ -22,7 +22,7 @@ spec:
   loadBalancerIP: {{ .Values.service.loadBalancerIP }}
   {{- end }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: {{ .Values.service.port  | default 8080 }}
       protocol: TCP 
-      targetPort: {{ .Values.springServicePort }}
+      targetPort: {{ .Values.springServicePort  | default 8080 }}
   selector: {{- include "common.labels.matchLabels" . | nindent 4 }}
