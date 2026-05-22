@@ -57,7 +57,7 @@ function installing_inji-certify() {
   fi
   ENABLE_INSECURE=''
   if [ "$flag" = "n" ]; then
-    ENABLE_INSECURE='--set enable_insecure=true';
+    ENABLE_INSECURE='--set enable_insecure="true"';
   fi
 
   echo Running inji-certify
