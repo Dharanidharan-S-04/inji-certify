@@ -46,7 +46,7 @@ spec:
         - destination:
             host: {{ $releaseName }}
             port:
-              number: {{ .port }}
+              number: {{ .port  | default 8080}}
     {{- end }}
   {{- if .Values.istio.corsPolicy }}
   corsPolicy:
