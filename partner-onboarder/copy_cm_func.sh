@@ -1,4 +1,3 @@
-dharani@TECHNO-563:~/plt-inji/inji-certify/partner-onboarder$ cat copy_cm_func.sh
 #!/bin/sh
 # Copy configmap and secret from one namespace to another.
 # ./copy_cm_func.sh <resource> <configmap_name> <source_namespace> <destination_namespace> [name]
