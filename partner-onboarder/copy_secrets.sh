@@ -3,7 +3,7 @@
 # DST_NS: Destination namespace
 
 COPY_UTIL=./copy_cm_func.sh
-DST_NS=esignet
+DST_NS=inji-certify
 
 $COPY_UTIL secret s3 s3 $DST_NS
 $COPY_UTIL secret keycloak keycloak $DST_NS
